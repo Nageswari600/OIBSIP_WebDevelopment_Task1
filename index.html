@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHub - Transform Your Future with Online Learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 7rem 5% 5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+            line-height: 1.2;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-5px);
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+            animation: fadeInRight 1s ease;
+        }
+
+        .hero-card {
+            background: rgba(255,255,255,0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-card h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .feature-card p {
+            color: #718096;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .course-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .course-image {
+            height: 180px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .course-content {
+            padding: 2rem;
+            color: #333;
+        }
+
+        .course-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .course-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+
+        .course-card p {
+            color: #718096;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .course-rating {
+            color: #f5576c;
+            font-weight: 600;
+        }
+
+        .course-students {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 6rem 5%;
+            background: #f8f9fa;
+        }
+
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .benefits-content h2 {
+            font-size: 2.8rem;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits-content p {
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            min-width: 50px;
+        }
+
+        .benefit-text h4 {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-text p {
+            font-size: 1rem;
+            color: #718096;
+            margin: 0;
+        }
+
+        .benefits-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .benefits-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .benefits-stat {
+            background: rgba(255,255,255,0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .benefits-stat h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefits-stat p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-white {
+            background: white;
+            color: #f5576c;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-about p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .developer-credit {
+            margin-top: 1rem;
+        }
+
+        .developer-credit p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 0.3rem;
+        }
+
+        .developer-name {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .benefits-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <span>📚</span>
+            LearnHub
+        </a>
+        <ul class="nav-links">
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#benefits">Why Us</a></li>
+        </ul>
+        <a href="#" class="nav-cta">Sign Up Free</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Learn <span class="hero-highlight">Anything</span> From Anywhere</h1>
+            <p>Master new skills with expert-led courses. Join millions of learners transforming their careers and lives through online education.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Start Learning Today</a>
+                <a href="#" class="btn-secondary">Browse Courses</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-card">
+                <h3>🎓 Join Our Community</h3>
+                <p>Start your learning journey with world-class instructors</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Active Students</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Expert Courses</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.9★</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="section-tag">WHY CHOOSE US</span>
+            <h2>Everything You Need to Succeed</h2>
+            <p>Powerful features designed to accelerate your learning journey</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🎯</span>
+                <h3>Expert Instructors</h3>
+                <p>Learn from industry professionals with years of real-world experience. Our instructors are passionate about teaching and dedicated to your success.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <h3>Learn at Your Pace</h3>
+                <p>Access course materials 24/7 from any device. Study when it fits your schedule with lifetime access to course content and regular updates.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🏆</span>
+                <h3>Certificates</h3>
+                <p>Earn recognized certificates upon course completion. Showcase your achievements and boost your career with industry-recognized credentials.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">💡</span>
+                <h3>Interactive Learning</h3>
+                <p>Engage with hands-on projects, quizzes, and assignments. Practice what you learn with real-world scenarios and practical exercises.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">👥</span>
+                <h3>Community Support</h3>
+                <p>Connect with fellow learners worldwide. Share knowledge, collaborate on projects, and grow together in our vibrant learning community.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📱</span>
+                <h3>Mobile Learning</h3>
+                <p>Download courses and learn offline. Our mobile app lets you learn on the go, making education accessible anywhere, anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="section-header">
+            <span class="section-tag">POPULAR COURSES</span>
+            <h2>Top-Rated Courses</h2>
+            <p>Explore our most popular courses chosen by thousands of students</p>
+        </div>
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-image">💻</div>
+                <div class="course-content">
+                    <span class="course-category">Development</span>
+                    <h3>Full Stack Web Development</h3>
+                    <p>Master HTML, CSS, JavaScript, React, Node.js and build amazing web applications from scratch.</p>
+                    <div class="course-meta">
+                        <span class="course-rating">★ 4.8 (12K)</span>
+                        <span class="course-students">45K students</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-image">🎨</div>
+                <div class="course-content">
+                    <span class="course-category">Design</span>
+                    <h3>UI/UX Design Masterclass</h3>
+                    <p>Learn professional design principles, Figma, and create stunning user interfaces that users love.</p>
+                    <div class="course-meta">
+                        <span class="course-rating">★ 4.9 (8K)</span>
+                        <span class="course-students">32K students</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-image">📊</div>
+                <div class="course-content">
+                    <span class="course-category">Data Science</span>
+                    <h3>Data Science with Python</h3>
+                    <p>Become a data scientist. Learn Python, machine learning, data visualization, and analytics.</p>
+                    <div class="course-meta">
+                        <span class="course-rating">★ 4.7 (15K)</span>
+                        <span class="course-students">52K students</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-image">📱</div>
+                <div class="course-content">
+                    <span class="course-category">Mobile</span>
+                    <h3>iOS & Android Development</h3>
+                    <p>Build mobile apps with React Native, Swift, and Kotlin. Launch your app to millions of users.</p>
+                    <div class="course-meta">
+                        <span class="course-rating">★ 4.8 (9K)</span>
+                        <span class="course-students">28K students</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="benefits-container">
+            <div class="benefits-content">
+                <h2>Why Students Love LearnHub</h2>
+                <p>We're committed to providing the best online learning experience with cutting-edge technology and expert support.</p>
+                <ul class="benefits-list">
+                    <li class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <div class="benefit-text">
+                            <h4>Lifetime Access</h4>
+                            <p>Once enrolled, access your courses forever with all future updates included</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <span class="benefit-icon">💰</span>
+                        <div class="benefit-text">
+                            <h4>30-Day Money Back</h4>
+                            <p>Not satisfied? Get a full refund within 30 days, no questions asked</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <span class="benefit-icon">🎓</span>
+                        <div class="benefit-text">
+                            <h4>Career Support</h4>
+                            <p>Get job placement assistance, resume reviews, and interview preparation</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <span class="benefit-icon">🔄</span>
+                        <div class="benefit-text">
+                            <h4>Regular Updates</h4>
+                            <p>Course content updated regularly to keep up with industry standards</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="benefits-image">
+                <div class="benefits-stats">
+                    <div class="benefits-stat">
+                        <h3>2M+</h3>
+                        <p>Students Worldwide</p>
+                    </div>
+                    <div class="benefits-stat">
+                        <h3>150+</h3>
+                        <p>Countries</p>
+                    </div>
+                    <div class="benefits-stat">
+                        <h3>1000+</h3>
+                        <p>Video Courses</p>
+                    </div>
+                    <div class="benefits-stat">
+                        <h3>24/7</h3>
+                        <p>Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Transform Your Career?</h2>
+        <p>Join thousands of students already learning on LearnHub</p>
+        <div class="cta-buttons">
+            <a href="#" class="btn-white">Get Started Free</a>
+            <a href="#" class="btn-secondary">View All Courses</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>📚 LearnHub</h3>
+                <p>Empowering learners worldwide with quality education. Transform your future with our expert-led courses and supportive community.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Courses</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Data Science</a></li>
+                    <li><a href="#">UI/UX Design</a></li>
+                    <li><a href="#">Mobile Development</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LearnHub. All rights reserved.</p>
+            <div class="developer-credit">
+                <p>Designed & Developed by <span class="developer-name">Nageswari Dharavath</span></p>
+                <p>Student | Web Development Enthusiast</p>
+                <p>AICTE OASIS INFOBYTE SIP - Level 1, Task 1</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

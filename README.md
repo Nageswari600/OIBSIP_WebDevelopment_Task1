@@ -1,4 +1,4 @@
-# landing-page
+![Screenshot 2025-10-29 194738](https://github.com/user-attachments/assets/2905c0ec-45aa-4ae0-8737-1b2471672885)![Screenshot 2025-10-29 194357](https://github.com/user-attachments/assets/2e91ce86-d206-4a0c-b89c-32f4aabbd774)# landing-page
 # 🌐 OIBSIP Web Development Task 1 — Landing Page
 
 ## 📋 Objective
@@ -34,6 +34,18 @@ A fully responsive, elegant landing page with smooth animations and consistent d
 ## 📸 Output Preview
 *(Attach a screenshot or link here if possible)*  
 ![Landing Page Screenshot]
+![Screenshot 2025-10-29 194738](https://github.com/user-attachments/assets/73621945-0012-4445-a480-82d83f4cc591)
+
+
+
+
+
+
+
+
+
+
+
 
 ## 🔗 Live Demo / Video
 - YouTube Demo: [Add your video link here]

@@ -48,9 +48,6 @@ A fully responsive, elegant landing page with smooth animations and consistent d
 
 
 
-## 🔗 Live Demo / Video
-- YouTube Demo: [Add your video link here]
-- LinkedIn Post: [Add your LinkedIn post link here]
 
 ## 👩‍💻 Author
 **Name:** Dharavath Nageswari  
